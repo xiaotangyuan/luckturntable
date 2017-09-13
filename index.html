@@ -127,6 +127,7 @@ function GetRandomNum(Min,Max){
 
 function get_shoot_award_name(){
 	// 从剩余的奖品中随机抽取一个奖品，返回奖品名称 （会自动将奖品数量减1
+	// 如果返回 undefined 表示已经没有奖品了
 	award_items_list = [];
 	for (var i = 0; i < award_name_list.length; i++) {
 		var award_remain_num = get_award_remain_num(award_name_list[i]);
@@ -148,6 +149,22 @@ function get_shoot_award_name(){
 	console.log('got :' + award_name);
 	reduce_award_remain_num(award_name);
 	return award_name
+}
+
+
+function get_remain_all_award_num(){
+	// 获取所有剩余奖品数量
+	var num = 0;
+	for (var i = 0; i < award_name_list.length; i++) {
+		var award_remain_num = get_award_remain_num(award_name_list[i]);
+		if (award_remain_num == 0) {
+			continue
+		}
+		for (var j = 0; j < award_remain_num; j++) {
+			num = num + 1;
+		};
+	};
+	return num
 }
 	
 
