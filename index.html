@@ -164,10 +164,8 @@ function get_remain_all_award_num(){
 			num = num + 1;
 		};
 	};
-	return num
+	return num;
 }
-	
-
 // =============
 // 
 $(function(){
@@ -191,10 +189,13 @@ $(function(){
         });
 
         //获取保存的值
-        for (var i = 0; i < award_name_list.length; i++) {
+        function show_new_award(){
+        	for (var i = 0; i < award_name_list.length; i++) {
     		var award_name = award_name_list[i];
     		$('.'+award_name).val(get_award_remain_num(award_name));
-    	};
+    		};
+        }
+		show_new_award();
 		//当前奖品索引
 		var index = 0;
 		//旋转速度
@@ -212,6 +213,7 @@ $(function(){
         //点击关闭弹框
         $('.modal-content .close').on('click',function(){
         	$('.modal').hide();
+        	show_new_award();
         })
         //点击提交获取奖品数量
         $('.submit').on('click',function(){
@@ -223,13 +225,24 @@ $(function(){
         //点击开始抽奖
 		$('.center').on('click',function(){
 			console.log('random' +': ' +random);
+			var remain_all_award_num = get_remain_all_award_num();
+			//判断是否还有
+			if(remain_all_award_num == 0){
+				$('.modal-content h2').html('奖品已领完！');
+				$('.modal-content p').html('');
+				$('.modal').show();
+				return;
+			}
 			var award_name = get_shoot_award_name();
 			var award_content = $('.'+award_name).parent().text();
 			alert(award_name+' : '+ award_content);
-			//run(100, award_name);
+			run(50, award_name);
 		});
 		function run(speed,award_name){
-			//console.log($('.'+award_name).index());
+			console.log($('.'+award_name).index());
+			var num = award_name.substr(award_name.length-1,1);
+			console.log('num'+ ":" + num);
+			var random = $('.jiangp'+num).index()+1;
 			var timer = setInterval(function(){	
 				index = $('.box.active').index();
 				index++;
@@ -246,11 +259,11 @@ $(function(){
 				if(circle>=3){
 					speed = 5000;
 				}
-				//console.log(index);
 				if((circle>=4 && index == random) || circle>=6){
 					clearInterval(timer);
 					circle = 0;
 					var award = $('.box').eq(index-1).data('award');
+					$('.modal-content h2').html('恭喜，中奖啦！');
 					$('.modal p').html(award);
 					$('.modal').show();
 				}
