@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>梦想改造家</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <meta name="keywords" content="your keywords">
+    <meta name="description" content="your description">
+    <link rel="stylesheet" href="style.css">
+	<script src='jquery.min.js'></script>
+	<script src='common.js'></script>
+</head>
+<body>
+	
+<div class="container">
+	<div class="center">
+		<img src="images/2.jpg" alt="">
+		开始
+	</div>
+	<div class="box jiangp1 active" data-award='5000储值卡'>
+		<img src="images/2.jpg" alt="">
+	</div>
+	<div class="box jiangp2" data-award='3000储值卡'>
+		<img src="images/2.jpg" alt="">
+	</div>
+	<div class="box jiangp3" data-award='1500储值卡'>
+		<img src="images/2.jpg" alt="">
+	</div>
+	<div class="box jiangp4" data-award='体态评估调整课（1节）'>
+		<img src="images/2.jpg" alt="">
+	</div>
+	<div class="box jiangp5" data-award='小团体课（1节）'>
+		<img src="images/2.jpg" alt="">
+	</div>	
+	<div class="box jiangp6" data-award='SKII前男友面膜（1盒）'>
+		<img src="images/2.jpg" alt="">
+	</div>
+	<div class="box jiangp7" data-award='伸展私教'>
+		<img src="images/2.jpg" alt="">
+	</div>
+	<div class="box jiangp8" data-award='普拉提私教'>
+		<img src="images/2.jpg" alt="">
+	</div>
+	<div class="box jiangp9" data-award='EMS（1节）'>
+		<img src="images/2.jpg" alt="">
+	</div>
+	<div class="box jiangp10" data-award='康复（1节）'>
+		<img src="images/2.jpg" alt="">
+	</div>
+</div>
+<!-- 输入奖品数量 -->
+<form action="" class="awardForm">
+	<h2>奖品数量</h2>
+	<p>5000储值卡 <input type="text" class='award1'></p>
+	<p>3000储值卡 <input type="text" class='award2'></p>
+	<p>1500储值卡 <input type="text" class='award3'></p>
+	<p>体态评估调整课 <input type="text" class='award4'></p>
+	<p>小团体课<input type="text" class='award5'></p>
+	<p>SKII前男友面膜 <input type="text" class='award6'></p>
+	<p>伸展私教 <input type="text" class='award7'></p>
+	<p>普拉提私教 <input type="text" class='award8'></p>
+	<p>EMS<input type="text" class='award9'></p>
+	<p>康复<input type="text" class='award10'></p>
+	<a class='submit'>提交</a>
+</form>
+
+<div class="modal">
+	<div class="modal-content">
+		<img src="images/modal.png" alt="">
+		<h2>恭喜，中奖啦！</h2>
+		<p class='awardContent'></p>
+		<span class="close">x</span>
+	</div>
+</div>
+<script>
+$(function(){
+		//设置每个奖品的位置
+        //中心点横坐标
+        var dotLeft = ($(".container").width()-$(".center").width())/2;
+        //中心点纵坐标
+        var dotTop = ($(".container").height()-$(".center").height())/2;
+        //起始角度
+        var stard = 0;
+        //半径
+        var radius = 200;
+        //每一个BOX对应的角度;
+        var avd = 360/$(".box").length;
+        //每一个BOX对应的弧度;
+        var ahd = -avd*Math.PI/180;
+        //设置圆的中心点的位置
+        $(".center").css({"left":dotLeft,"top":dotTop});
+        $(".box").each(function(index, element){
+            $(this).css({"left":Math.sin((ahd*index))*radius+dotLeft,"top":Math.cos((ahd*index))*radius+dotTop});
+        });
+		//当前奖品索引
+		var index = 0;
+		//旋转速度
+		var speed = 0;
+		//随机奖品
+		var random;
+		var circle = 0;
+        //旋转停留时间
+        function get_time(i){
+        	if (i>5) {
+        		return i*70;
+        	}
+        	return i*50;
+        }
+        //点击关闭弹框
+        $('.modal-content .close').on('click',function(){
+        	$('.modal').hide();
+        })
+        //点击提交获取奖品数量
+        $('.submit').on('click',function(){
+	        card5000 = parseInt($('.award1').val());
+	        card3000 = parseInt($('.award2').val());
+	        card1500 = parseInt($('.award3').val());
+	        posture = parseInt($('.award4').val());
+	        team = parseInt($('.award5').val());
+	        skii = parseInt($('.award6').val());
+	        extended = parseInt($('.award7').val());
+	        pilates = parseInt($('.award8').val());
+	        ems = parseInt($('.award9').val());
+	        recovery = parseInt($('.award10').val());
+	        totalAwards = parseInt(card5000 +card3000+card1500+posture+team+skii+extended+pilates+ems+recovery);
+	        console.log(totalAwards);
+	        setItem('totalAwards',totalAwards);
+			setItem('5000储值卡',card5000);
+			setItem('3000储值卡',card3000);
+			setItem('1500储值卡',card1500);
+			setItem('体态评估调整课（1节）',posture);
+			setItem('小团体课（1节）',team);
+			setItem('SKII前男友面膜（1盒）',skii);
+			setItem('伸展私教',extended);
+			setItem('普拉提私教',pilates);
+			setItem('EMS（1节）',ems);
+			setItem('康复（1节）',recovery);
+			setItem('剩余奖品类型',arr);
+			$(this).attr('readonly',true);
+        })
+        var totalAwards;
+        var card5000;
+        var card3000;
+        var card1500;
+        var posture;
+        var team;
+        var skii;
+        var extended;
+        var pilates;
+        var ems;
+        var recovery;
+        //奖品类型
+        var arr;
+        //设置localstorage值
+
+        //奖品类型
+        arr = [1,2,3,4,5,6,7,8,9,10];
+
+		//高亮
+		// $('.center').on('click',function(){
+		// 	var len = $('.box').length;
+		// 	for(var i =0;i<len;i++){
+		// 		(function(i){
+		// 	        setTimeout(function(){
+		// 	            console.log(i);
+		// 	           	$('.box').removeClass('active');
+		// 				$('.box').eq(i).addClass('active');
+		// 	        }, get_time(i));
+		// 	    })(i);
+		// 	}
+		// })
+		function indexOf(val){
+	        for(var i = 0; i < arr.length; i++){
+	            if(arr[i] == val){return i;}
+	        }
+	        return -1;
+   		}
+   		function remove(val){
+	        var index = indexOf(val);
+	        if(index > -1){arr.splice(index,1);}
+   		}
+		function setItem(name, val) {
+		    localStorage.setItem(name, val);
+		}
+		$('.center').on('click',function(){
+			console.log(arr);
+			console.log(Math.floor((Math.random()*arr.length+1)));
+			random = arr[Math.floor((Math.random()*arr.length+1))];
+			// random =1;
+			console.log('random' +': ' +random);
+			run(100);
+		});
+		function run(speed){
+			var timer = setInterval(function(){	
+				index = $('.box.active').index();
+				index++;
+				if(index > 10){
+					index = 1;
+					circle ++;
+					console.log(circle);
+				}
+				$('.box').removeClass('active');
+				$('.box').eq(index-1).addClass('active');
+				if(circle >=2){
+					speed = 3000;
+				}
+				if(circle>=3){
+					speed = 5000;
+				}
+				if((circle>=4 && index == random) || circle>=6){
+					clearInterval(timer);
+					circle = 0;
+					var award = $('.box').eq(index-1).data('award');
+					console.log(award);
+					$('.modal p').html(award);
+					$('.modal').show();
+					// alert('恭喜您！获得' + award +'<br/>' + random );
+					totalAwards = totalAwards-1; 
+					if(totalAwards <= 0){
+						alert('奖品已领完！欢迎下次再来');
+						$('.center').off('click');
+						return;
+					}
+					setItem('totalAwards',totalAwards);
+					if(award == '5000储值卡'){
+						card5000 = localStorage.getItem('5000储值卡');
+						card5000--;
+						$('jiangp1').val(card5000);
+						setItem('5000储值卡',card5000);
+						console.log(card5000);
+						if(card5000 <= 0){
+							// arr.splice(random-1,1);
+							remove(random);
+							setItem('剩余奖品类型',arr);
+						}
+					}
+					if(award == '3000储值卡'){
+						card3000 = localStorage.getItem('3000储值卡');
+						card3000--;
+						setItem('3000储值卡',card3000);
+						if(card3000 <= 0){
+							// arr.splice(random-1,1);
+							remove(random);
+							setItem('剩余奖品类型',arr);
+						}
+					}
+					if(award == '1500储值卡'){
+						card1500 = localStorage.getItem('1500储值卡');
+						card1500--;
+						setItem('1500储值卡',card1500);
+						if(card1500 <= 0){
+							// arr.splice(random-1,1);
+							remove(random);
+							setItem('剩余奖品类型',arr);
+						}
+					}
+					if(award == '体态评估调整课（1节）'){
+						posture = localStorage.getItem('体态评估调整课（1节）');
+						posture--;
+						setItem('体态评估调整课（1节）',posture);
+						if(posture <= 0){
+							// arr.splice(random-1,1);
+							remove(random);
+							setItem('剩余奖品类型',arr);
+						}
+					}
+					if(award == '小团体课（1节）'){
+						team = localStorage.getItem('小团体课（1节）');
+						team--;
+						setItem('小团体课（1节）',team);
+						if(team <= 0){
+							// arr.splice(random-1,1);
+							remove(random);
+							setItem('剩余奖品类型',arr);
+						}
+					}
+					if(award == 'SKII前男友面膜（1盒）'){
+						skii = localStorage.getItem('SKII前男友面膜（1盒）');
+						skii--;
+						setItem('SKII前男友面膜（1盒）',skii);
+						if(skii <= 0){
+							// arr.splice(random-1,1);
+							remove(random);
+							setItem('剩余奖品类型',arr);
+						}
+					}
+					if(award == '伸展私教'){
+						extended = localStorage.getItem('伸展私教');
+						extended--;
+						setItem('伸展私教',extended);
+						if(extended <= 0){
+							// arr.splice(random-1,1);
+							remove(random);
+							setItem('剩余奖品类型',arr);
+						}
+					}
+					if(award == '普拉提私教'){
+						pilates = localStorage.getItem('普拉提私教');
+						pilates--;
+						setItem('普拉提私教',pilates);
+						if(pilates <= 0){
+							// arr.splice(random-1,1);
+							remove(random);
+							setItem('剩余奖品类型',arr);
+						}
+					}
+					if(award == 'EMS（1节）'){
+						ems = localStorage.getItem('EMS（1节）');
+						ems--;
+						setItem('EMS（1节）',ems);
+						if(ems <= 0){
+							// arr.splice(random-1,1);
+							remove(random);
+							setItem('剩余奖品类型',arr);
+						}
+					}
+					if(award == '康复（1节）'){
+						recovery = localStorage.getItem('康复（1节）');
+						recovery--;
+						setItem('康复（1节）',recovery);
+						if(recovery <= 0){
+							// arr.splice(random-1,1);
+							remove(random);
+							setItem('剩余奖品类型',arr);
+						}
+					}
+				}
+				console.log('index' + ':' +index);
+				console.log('circle' + ':' +circle);
+				console.log('speed' + ':' +speed);
+			},speed);
+				console.log('speed' + ':' +speed);
+		}
+    })
+
+
+</script>
+
+
+
+</body>
+</html>

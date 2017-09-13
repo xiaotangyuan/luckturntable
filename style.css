@@ -1,0 +1,88 @@
+body{
+	font-family: Tahoma,Arial,PingHei,"Helvetica Neue","Hiragino Sans GB","Microsoft yahei",SimSum,sans-serif
+}
+.container{
+	width: 600px;
+	margin: 250px 50px;
+	display: inline-block;
+	position: relative;
+
+}
+img{
+	max-width: 100%;
+}
+.center,.box{
+	width: 60px;
+	height: 60px;
+	position: absolute;
+}
+.box{
+	opacity: .5;
+}
+.box.active{
+	opacity: 1;
+	transform:scale(1.2);
+}
+.awardForm{
+	display: inline-block;
+}
+.awardForm input{
+	border: 0;
+	border-bottom: 1px solid #eee;
+	margin-left: 10px;
+	outline: none;
+	text-indent: 10px;
+}
+.awardForm input:focus{
+	border-bottom: 1px solid #ed482a;
+}
+.awardForm .submit{
+	display: block;
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+	background:#ed482a;
+	color: #fff;
+	text-align: center;
+	border-radius: 8px;
+	cursor: pointer;
+}
+.modal{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background:rgba(0,0,0,.5);
+	z-index: 1;
+	display: none;
+}
+.modal-content{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 
+	transform:translate(-50%,-50%);
+	-webkit-transform:translate(-50%,-50%);
+	background:#ed482a;
+	text-align: center;
+	color: #fff;
+	width: 300px;
+    border-radius: 10px;
+    padding: 4% 0 1%;
+}
+.modal img{
+	position: absolute;
+	top: -30%;
+	left: 50%;
+	transform:translate(-50%,-50%);
+	-webkit-transform:translate(-50%,-50%);
+}
+.modal-content .close{
+	position: absolute;
+	top: 0;
+	right: 10px;
+	cursor: pointer;
+}
+
+
