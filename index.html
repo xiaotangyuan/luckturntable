@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>梦想改造家</title>
+    <title>抽奖</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="renderer" content="webkit">
     <meta name="keywords" content="your keywords">
@@ -52,7 +52,7 @@
 </div>
 <!-- 输入奖品数量 -->
 <form action="" class="awardForm">
-	<h2>奖品数量</h2>
+	<h2>奖品数量重置</h2>
 	<p>5000储值卡 <input type="text" class='award1'></p>
 	<p>3000储值卡 <input type="text" class='award2'></p>
 	<p>1500储值卡 <input type="text" class='award3'></p>
@@ -75,7 +75,78 @@
 	</div>
 </div>
 <script>
+
+// =======new code======
+function gen_award_name_list(){
+	// 生成奖品代码中的 称号数组
+	var base_award_string = 'award';
+	var award_name_list = [];
+	for (var i = 0; i < 10; i++) {
+		var award_name = base_award_string + i;
+		award_name_list.push(award_name);
+	}
+	return award_name_list
+}
+
+var award_name_list = gen_award_name_list();
+console.log(award_name_list);
+
+function set_award_remain_num(award_name, remain_num){
+	// 设置奖品剩余数量
+	// award_name = 'award1'
+	localStorage[award_name] = parseInt(remain_num);
+}
+
+function get_award_remain_num(award_name){
+	// 获取奖品剩余数量
+	var val = localStorage[award_name];
+	if(val == undefined){
+		return 0;
+	}
+	return parseInt(val)
+}
+
+function reduce_award_remain_num(award_name){
+	// 减掉奖品数量1个
+	var award_remain_num = get_award_remain_num(award_name);
+	if (award_remain_num > 0) {
+		var remain_num = award_remain_num - 1;
+		set_award_remain_num(award_name, remain_num);
+		console.log('set award num:' + award_name + '--' + remain_num);
+	}else{
+		console.log('this award is over:' + award_name);
+	}
+}
+
+function GetRandomNum(Min,Max){   
+	var Range = Max - Min;   
+	var Rand = Math.random();   
+	return(Min + Math.round(Rand * Range));   
+}
+
+function get_shoot_award_name(){
+	// 从剩余的奖品中随机抽取一个奖品，返回奖品名称 （会自动将奖品数量减1
+	award_items_list = [];
+	for (var i = 0; i < award_name_list.length; i++) {
+		var award_remain_num = get_award_remain_num(award_name_list[i]);
+		if (award_remain_num == 0) {
+			continue
+		}
+		for (var j = 0; j < award_remain_num; j++) {
+			award_items_list.push(award_name_list[i]);
+		};
+	};
+	theindex = GetRandomNum(0, award_items_list.length);
+	return award_items_list[theindex]
+}
+	
+
+// =============
+// 
 $(function(){
+
+
+
 		//设置每个奖品的位置
         //中心点横坐标
         var dotLeft = ($(".container").width()-$(".center").width())/2;
