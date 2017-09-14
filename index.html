@@ -1,280 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>抽奖</title>
+    <title>健身抽奖</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="renderer" content="webkit">
     <meta name="keywords" content="your keywords">
     <meta name="description" content="your description">
-    <link rel="stylesheet" href="style.css">
-	<script src='jquery.min.js'></script>
-	<script src='common.js'></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	
-<div class="container">
-	<div class="center">
-		<img src="images/2.jpg" alt="">
-		开始
+	<div class="container">
+		<div class="center">
+			<img src="images/logo.jpg" alt="">
+		</div>
+		<div class="box jiangp1 active" data-award='5000储值卡'>
+			<img src="images/2.jpg" alt="">
+		</div>
+		<div class="box jiangp2" data-award='3000储值卡'>
+			<img src="images/2.jpg" alt="">
+		</div>
+		<div class="box jiangp3" data-award='1500储值卡'>
+			<img src="images/2.jpg" alt="">
+		</div>
+		<div class="box jiangp4" data-award='体态评估调整课（1节）'>
+			<img src="images/2.jpg" alt="">
+		</div>
+		<div class="box jiangp5" data-award='小团体课（1节）'>
+			<img src="images/2.jpg" alt="">
+		</div>	
+		<div class="box jiangp6" data-award='SKII前男友面膜（1盒）'>
+			<img src="images/2.jpg" alt="">
+		</div>
+		<div class="box jiangp7" data-award='伸展私教'>
+			<img src="images/2.jpg" alt="">
+		</div>
+		<div class="box jiangp8" data-award='普拉提私教'>
+			<img src="images/2.jpg" alt="">
+		</div>
+		<div class="box jiangp9" data-award='EMS（1节）'>
+			<img src="images/2.jpg" alt="">
+		</div>
+		<div class="box jiangp10" data-award='康复（1节）'>
+			<img src="images/2.jpg" alt="">
+		</div>
 	</div>
-	<div class="box jiangp1 active" data-award='5000储值卡'>
-		<img src="images/2.jpg" alt="">
+	<!-- 输入奖品数量 -->
+	<form action="" class="awardForm">
+		<h2>奖品数量重置</h2>
+		<p>5000储值卡 <input type="number" class='award0'></p>
+		<p>3000储值卡 <input type="number" class='award1'></p>
+		<p>1500储值卡 <input type="number" class='award2'></p>
+		<p>体态评估调整课 <input type="number" class='award3'></p>
+		<p>小团体课<input type="number" class='award4'></p>
+		<p>SKII前男友面膜 <input type="number" class='award5'></p>
+		<p>伸展私教 <input type="number" class='award6'></p>
+		<p>普拉提私教 <input type="number" class='award7'></p>
+		<p>EMS<input type="number" class='award8'></p>
+		<p>康复<input type="number" class='award9'></p>
+		<a class='submit'>提交</a>
+	</form>
+	<!-- 查看奖品数量侧边栏 -->
+	<a class='check'>设置与查看奖品数量 <span><<</span></a>
+	<!-- 领取成功弹窗 -->
+	<div class="modal">
+		<div class="modal-content">
+			<img src="images/modal.png" alt="">
+			<h2>恭喜，中奖啦！</h2>
+			<p class='awardContent'></p>
+			<span class="close">x</span>
+		</div>
 	</div>
-	<div class="box jiangp2" data-award='3000储值卡'>
-		<img src="images/2.jpg" alt="">
-	</div>
-	<div class="box jiangp3" data-award='1500储值卡'>
-		<img src="images/2.jpg" alt="">
-	</div>
-	<div class="box jiangp4" data-award='体态评估调整课（1节）'>
-		<img src="images/2.jpg" alt="">
-	</div>
-	<div class="box jiangp5" data-award='小团体课（1节）'>
-		<img src="images/2.jpg" alt="">
-	</div>	
-	<div class="box jiangp6" data-award='SKII前男友面膜（1盒）'>
-		<img src="images/2.jpg" alt="">
-	</div>
-	<div class="box jiangp7" data-award='伸展私教'>
-		<img src="images/2.jpg" alt="">
-	</div>
-	<div class="box jiangp8" data-award='普拉提私教'>
-		<img src="images/2.jpg" alt="">
-	</div>
-	<div class="box jiangp9" data-award='EMS（1节）'>
-		<img src="images/2.jpg" alt="">
-	</div>
-	<div class="box jiangp10" data-award='康复（1节）'>
-		<img src="images/2.jpg" alt="">
-	</div>
-</div>
-<!-- 输入奖品数量 -->
-<form action="" class="awardForm">
-	<h2>奖品数量重置</h2>
-	<p>5000储值卡 <input type="number" class='award0'></p>
-	<p>3000储值卡 <input type="number" class='award1'></p>
-	<p>1500储值卡 <input type="number" class='award2'></p>
-	<p>体态评估调整课 <input type="number" class='award3'></p>
-	<p>小团体课<input type="number" class='award4'></p>
-	<p>SKII前男友面膜 <input type="number" class='award5'></p>
-	<p>伸展私教 <input type="number" class='award6'></p>
-	<p>普拉提私教 <input type="number" class='award7'></p>
-	<p>EMS<input type="number" class='award8'></p>
-	<p>康复<input type="number" class='award9'></p>
-	<a class='submit'>提交</a>
-</form>
-
-<div class="modal">
-	<div class="modal-content">
-		<img src="images/modal.png" alt="">
-		<h2>恭喜，中奖啦！</h2>
-		<p class='awardContent'></p>
-		<span class="close">x</span>
-	</div>
-</div>
-<script>
-
-// =======new code======
-function gen_award_name_list(){
-	// 生成奖品代码中的 称号数组
-	var base_award_string = 'award';
-	var award_name_list = [];
-	for (var i = 0; i < 10; i++) {
-		var award_name = base_award_string + i;
-		award_name_list.push(award_name);
-	}
-	return award_name_list
-}
-
-var award_name_list = gen_award_name_list();
-console.log(award_name_list);
-
-function set_award_remain_num(award_name, remain_num){
-	// 设置奖品剩余数量
-	// award_name = 'award1'
-	localStorage[award_name] = parseInt(remain_num);
-}
-
-function get_award_remain_num(award_name){
-	// 获取奖品剩余数量
-	var val = localStorage[award_name];
-	if(val == undefined){
-		return 0;
-	}
-	return parseInt(val)
-}
-
-function reduce_award_remain_num(award_name){
-	// 减掉奖品数量1个
-	var award_remain_num = get_award_remain_num(award_name);
-	if (award_remain_num > 0) {
-		var remain_num = award_remain_num - 1;
-		console.log('剩余数量:' + remain_num);
-		set_award_remain_num(award_name, remain_num);
-		console.log('set award num:' + award_name + '--' + remain_num);
-	}else{
-		console.log('this award is over:' + award_name);
-	}
-}
-
-function GetRandomNum(Min,Max){   
-	var Range = Max - Min;   
-	var Rand = Math.random();   
-	return(Min + Math.round(Rand * Range));   
-}
-
-function get_shoot_award_name(){
-	// 从剩余的奖品中随机抽取一个奖品，返回奖品名称 （会自动将奖品数量减1
-	// 如果返回 undefined 表示已经没有奖品了
-	award_items_list = [];
-	for (var i = 0; i < award_name_list.length; i++) {
-		var award_remain_num = get_award_remain_num(award_name_list[i]);
-		if (award_remain_num == 0) {
-			continue
-		}
-		for (var j = 0; j < award_remain_num; j++) {
-			award_items_list.push(award_name_list[i]);
-		};
-	};
-	random_max = award_items_list.length - 1;
-	if(random_max <= 0){
-		random_max = 0;
-	}
-	theindex = GetRandomNum(0, random_max);
-	var award_name = award_items_list[theindex];
-	console.log(award_items_list);
-	console.log('the index is :'+theindex);
-	console.log('got :' + award_name);
-	reduce_award_remain_num(award_name);
-	return award_name
-}
-
-
-function get_remain_all_award_num(){
-	// 获取所有剩余奖品数量
-	var num = 0;
-	for (var i = 0; i < award_name_list.length; i++) {
-		var award_remain_num = get_award_remain_num(award_name_list[i]);
-		if (award_remain_num == 0) {
-			continue
-		}
-		for (var j = 0; j < award_remain_num; j++) {
-			num = num + 1;
-		};
-	};
-	return num;
-}
-// =============
-// 
-$(function(){
-		//设置每个奖品的位置
-        //中心点横坐标
-        var dotLeft = ($(".container").width()-$(".center").width())/2;
-        //中心点纵坐标
-        var dotTop = ($(".container").height()-$(".center").height())/2;
-        //起始角度
-        var stard = 0;
-        //半径
-        var radius = 200;
-        //每一个BOX对应的角度;
-        var avd = 360/$(".box").length;
-        //每一个BOX对应的弧度;
-        var ahd = -avd*Math.PI/180;
-        //设置圆的中心点的位置
-        $(".center").css({"left":dotLeft,"top":dotTop});
-        $(".box").each(function(index, element){
-            $(this).css({"left":Math.sin((ahd*index))*radius+dotLeft,"top":Math.cos((ahd*index))*radius+dotTop});
-        });
-
-        //获取保存的值
-        function show_new_award(){
-        	for (var i = 0; i < award_name_list.length; i++) {
-    		var award_name = award_name_list[i];
-    		$('.'+award_name).val(get_award_remain_num(award_name));
-    		};
-        }
-		show_new_award();
-		//当前奖品索引
-		var index = 0;
-		//旋转速度
-		var speed = 0;
-		//随机奖品
-		var random;
-		var circle = 0;
-        //旋转停留时间
-        function get_time(i){
-        	if (i>5) {
-        		return i*70;
-        	}
-        	return i*50;
-        }
-        //点击关闭弹框
-        $('.modal-content .close').on('click',function(){
-        	$('.modal').hide();
-        	show_new_award();
-        })
-        //点击提交获取奖品数量
-        $('.submit').on('click',function(){
-        	for (var i = 0; i < award_name_list.length; i++) {
-        		var award_name = award_name_list[i];
-        		set_award_remain_num(award_name, $('.'+award_name).val());
-        	};
-        })
-        //点击开始抽奖
-		$('.center').on('click',function(){
-			console.log('random' +': ' +random);
-			var remain_all_award_num = get_remain_all_award_num();
-			//判断是否还有
-			if(remain_all_award_num == 0){
-				$('.modal-content h2').html('奖品已领完！');
-				$('.modal-content p').html('');
-				$('.modal').show();
-				return;
-			}
-			var award_name = get_shoot_award_name();
-			var award_content = $('.'+award_name).parent().text();
-			alert(award_name+' : '+ award_content);
-			run(50, award_name);
-		});
-		function run(speed,award_name){
-			console.log($('.'+award_name).index());
-			var num = award_name.substr(award_name.length-1,1);
-			console.log('num'+ ":" + num);
-			var random = $('.jiangp'+num).index()+1;
-			var timer = setInterval(function(){	
-				index = $('.box.active').index();
-				index++;
-				if(index > 10){
-					index = 1;
-					circle ++;
-					console.log(circle);
-				}
-				$('.box').removeClass('active');
-				$('.box').eq(index-1).addClass('active');
-				if(circle >=2){
-					speed = 3000;
-				}
-				if(circle>=3){
-					speed = 5000;
-				}
-				if((circle>=4 && index == random) || circle>=6){
-					clearInterval(timer);
-					circle = 0;
-					var award = $('.box').eq(index-1).data('award');
-					$('.modal-content h2').html('恭喜，中奖啦！');
-					$('.modal p').html(award);
-					$('.modal').show();
-				}
-			},speed);
-		}
-    })
-
-
-</script>
-
-
-
+	<script src='js/jquery.min.js'></script>
+	<script src='js/common.js'></script>
 </body>
 </html>

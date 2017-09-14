@@ -1,15 +1,18 @@
 body{
-	font-family: Tahoma,Arial,PingHei,"Helvetica Neue","Hiragino Sans GB","Microsoft yahei",SimSum,sans-serif
+	font-family: Tahoma,Arial,PingHei,"Helvetica Neue","Hiragino Sans GB","Microsoft yahei",SimSum,sans-serif;
+/*	background:url(../images/bg.jpg) center repeat-y;
+	background-size: cover;*/
 }
 .container{
-	width: 600px;
-	margin: 250px 50px;
-	display: inline-block;
+	width: 700px;
+	margin: 250px auto;
 	position: relative;
-
 }
 img{
 	max-width: 100%;
+}
+.center{
+	cursor: pointer;
 }
 .center,.box{
 	width: 60px;
@@ -24,7 +27,11 @@ img{
 	transform:scale(1.2);
 }
 .awardForm{
-	display: inline-block;
+	position: absolute;
+	right: -300px;
+    top: 0px;
+    transition:right .5s linear;
+    -webkit-transition:right .5s linear;
 }
 .awardForm input{
 	border: 0;
@@ -32,6 +39,9 @@ img{
 	margin-left: 10px;
 	outline: none;
 	text-indent: 10px;
+}
+.awardForm.on{
+	right: 0px;
 }
 .awardForm input:focus{
 	border-bottom: 1px solid #ed482a;
@@ -89,4 +99,37 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;  
     margin: 0;  
 } 
+.check{
+	position: absolute;
+	top: 20px;
+	right: 0;
+	padding:0 40px 0 20px;
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	text-align: center;
+	background: #ed482a;
+	border-radius: 8px;
+	cursor: pointer;
+}
+.check span{
+	color: #fff;
+	position: absolute;
+	right: 10px;
+	top: 0;
+	animation:loop .8s ease-out infinite;
+}
+@keyframes loop{
+	0%{
+		right: 5px;
+	}
+	50%{
+		right: 15px;
+	}
+	100%{
+		right:5px;
+	}
+}
+
+
 
