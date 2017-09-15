@@ -1,2 +1,0 @@
-# luckturntable
-抽奖

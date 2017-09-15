@@ -107,7 +107,7 @@ $(function(){
         //设置圆的中心点的位置
         $(".center").css({"left":dotLeft,"top":dotTop});
         $(".box").each(function(index, element){
-            $(this).css({"left":Math.sin((ahd*index))*radius+dotLeft,"top":Math.cos((ahd*index))*radius+dotTop});
+            $(this).css({"left":-Math.sin((ahd*index))*radius+dotLeft,"top":-Math.cos((ahd*index))*radius+dotTop});
         });
         //点击设置奖品数量
 		$('.check').on('click',function(){
@@ -147,6 +147,8 @@ $(function(){
         		var award_name = award_name_list[i];
         		set_award_remain_num(award_name, $('.'+award_name).val());
         	};
+        	alert('奖品设置成功！')
+        	//$('.modal-content').html('<h2>设置成功</h2><span class="close">x</span>').css('padding',0).parent().show();
         })
         //点击开始抽奖
 		$('.center').on('click',function(){
