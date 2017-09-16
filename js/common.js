@@ -188,7 +188,7 @@ $(function(){
 					circle = 0;
 					var award = $('.box').eq(index-1).data('award');
 					$('.modal-content h2').html('恭喜，中奖啦！');
-					$('.modal p').html(award);
+					$('.modal p.awardContent').html(award);
 					$('.modal').show();
 				}
 			},speed);

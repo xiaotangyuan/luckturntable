@@ -92,10 +92,12 @@ img{
 .modal-content h2{
 	font-size:18px;
 	font-weight: normal; 
+	margin: 0;
 }
 .modal-content p{
 	font-size:26px;
 	font-weight: bold; 
+	margin:12px auto;
 }
 .modal img{
 	position: absolute;
